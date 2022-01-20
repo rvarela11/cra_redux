@@ -8,6 +8,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 // @actions
 import { fetchLocations } from '../../actions/index';
 
+// @components
+import Locations from '../Locations';
+
 const App = () => {
     const dispatch = useDispatch();
     const { fetchLocationsLoading } = useSelector((state) => state);
@@ -16,16 +19,10 @@ const App = () => {
     useEffect(() => dispatch(fetchLocations()), []);
 
     if (fetchLocationsLoading) {
-        return (
-            <div className="circular-progress">
-                <CircularProgress />
-            </div>
-        );
+        return <CircularProgress />;
     }
 
-    return (
-        <p>Howdy</p>
-    );
+    return <Locations />;
 };
 
 export default App;
